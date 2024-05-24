@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: db-reader-service
+  data:
+    mongodb:
+      uri: mongodb+srv://rofr:MAIAPowMbCx4zrW3@helixcluster0.dffukdc.mongodb.net/?retryWrites=true&w=majority&appName=HelixCluster0
+      database: helix
+server:
+  servlet:
+    context-path: /api
