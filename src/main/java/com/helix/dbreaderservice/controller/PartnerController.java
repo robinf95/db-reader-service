@@ -1,6 +1,7 @@
 package com.helix.dbreaderservice.controller;
 
-import com.helix.dbreaderservice.model.Partner;
+import com.helix.dbreaderservice.mapper.PartnerMapper;
+import com.helix.dbreaderservice.model.PartnerDTO;
 import com.helix.dbreaderservice.service.DbReaderService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class PartnerController {
 
     DbReaderService dbReaderService;
+    PartnerMapper partnerMapper;
 
     @Autowired
-    public PartnerController(DbReaderService dbReaderService) {
+    public PartnerController(DbReaderService dbReaderService, PartnerMapper partnerMapper) {
         this.dbReaderService = dbReaderService;
+        this.partnerMapper = partnerMapper;
     }
     @GetMapping("/partners")
-    public List<Partner> getPartners() {
-        return dbReaderService.getPartners();
+    public List<PartnerDTO> getPartners() {
+        return partnerMapper.mapListToPartnerDtoList(dbReaderService.getPartners());
     }
 
 }
